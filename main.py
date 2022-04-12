@@ -12,6 +12,7 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 import os
+import psycopg2_binary
 
 
 app = Flask(__name__)
