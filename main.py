@@ -36,7 +36,7 @@ login_manager.init_app(app)
 
 
 ##CONNECT TO DB
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL",  "sqlite:///blog.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -50,7 +50,6 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(300))
     name = db.Column(db.String(1000))
-
     #This will act like a list of BlogSpot objects attached to eaech user
     #The "authro refers to the author property in the BlogSpot Class
     posts = relationship("BlogPost", back_populates="author")
@@ -107,7 +106,7 @@ def admin_only(f):
 
 @app.route('/')
 def get_all_posts():
-    posts = db.session.query(BlogPost).all()
+    posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts, user=current_user)
 
 
