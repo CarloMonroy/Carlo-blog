@@ -85,7 +85,7 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
 
 
-#db.create_all()
+db.create_all()
 
 #Define the user loader
 @login_manager.user_loader
@@ -106,7 +106,7 @@ def admin_only(f):
 
 @app.route('/')
 def get_all_posts():
-    posts = db.session.query(BlogPost).all()
+    posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts, user=current_user)
 
 
