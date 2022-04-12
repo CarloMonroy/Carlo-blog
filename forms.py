@@ -13,21 +13,21 @@ class CreatePostForm(FlaskForm):
 
 ## Register form
 class RegisterForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    name = StringField('Name', validators=[DataRequired()])
-    submit = SubmitField('Sign Me Up!')
+    email = StringField("Email", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    name = StringField("Name", validators=[DataRequired()])
+    submit = SubmitField("Sign Me Up!")
 
 ## Loginform
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Let me in!')
+    email = StringField("Email", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Let me in!")
 
 ## CommentForm
 class CommentForm(FlaskForm):
-    comment = CKEditorField('Blog Comment', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    comment = CKEditorField("Blog Comment", validators=[DataRequired()])
+    submit = SubmitField("Submit")
 
 
 
